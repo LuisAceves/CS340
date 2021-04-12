@@ -9,7 +9,7 @@ function Student(props) {
   );
 }
 
-export default function MultiComp(){
+export default function MultiTVs(){
   return (
     <View style={{
       flex: 1,

@@ -1,22 +1,30 @@
-import React from 'react';
-import { Text, TextInput, View } from 'react-native';
+import React, { useState } from 'react';
+import { Text, View, Button } from 'react-native';
 
-export default function catApp(){
-
-  Let pic = {
-    url: 'https:raw.githubusercontent.com/AbdunabiRamadan/CIS340/master/images/dog2.png'
-  }
-
+function TV(props) {
+  const [isOff,setisOff] = useState(true);
   return (
-    <View style={{
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center'
-    }}> 
-      <Image source= {pic}
-        style= {{width: 200, height: 200}}
+    <View>
+      {"\n\n\n\n"}
+      <Text>
+        This is {props.name} TV, and it is {isOff ? "OFF" : "Turned Me on"}
+      </Text>
+      <Button
+      onPress={() =>{
+        setisOff(false);
+      }}
+      disabled={!isOff}
+      title={isOff ? "Turn Me On, Please!" : "Thank you!"}
       />
-      <Text> Hello, this is my dog</Text>
-      </View>
+    </View>
+  )
+}
+
+export default function MultiComp(){
+  return (
+    <View>
+      <TV name="LG" />
+      <TV name="Sony" />
+    </View>
   );
 }
