@@ -1,19 +1,27 @@
-import React, { Component, useState } from 'react';
-import { Text, TextInput, View } from 'react-native';
+import React from 'react';
+import { text, View, Sectionlist } from 'react-native';
 
-export default function WordConverter() {
-  const [text, setText]=useState('');
+export default StatesApp = () => {
   return (
-    <View style={{padding: 40}}>
-      <TextInput
-      style={{height: 40}}
-      placeholder="Input your text here!"
-      onChangeText={text => setText(text)}
-      defaultValue={text}
-      />
-      <Text style={{padding: 10, fontSize: 42}}>
-        {text.split(' ').map((word) => word && '*').join(' ')}
-      </Text>
+    <View style={{flex: 1, paddingTop:22}}>
+      <Sectionlist>
+        sections={[
+          {title: 'A', data: ['Alabama', 'Alaska', 'Arizona', 'Arkansas']},
+          {title: 'C', data: ['California', 'Colorado', 'Connecticut']},
+          {title: 'D', data: ['Delaware']},
+          {title: 'F', data: ['Florida']},
+          {title: 'G', data: ['Georgia']},
+          {title: 'H', data: ['Hawaii']},
+        ]}
+        renderItm={({items}) => <Text style={{paddingTop: 4, fontSize: 20, height: 44,}}> {item} </Text>}
+        renderSectionHeader={({section}) => <Text style={{paddingTop: 4, paddingLeft: 10,
+        paddingRight: 10, 
+        paddingBottom: 4, 
+        fontSize: 14, 
+        fontWeight: 'bold',
+        backgroundColor:'#9FA8DF',}}>(section.title)</Text>}
+        keyExtractor={(item,index) =>index}
+      </Sectionlist>
     </View>
-  );
-}
+  )
+};
